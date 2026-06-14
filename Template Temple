@@ -1,0 +1,303 @@
+import time
+import random
+import textwrap
+
+monsters = {
+    "Nuth":     {'value':0, 'chance': 1},
+    "Singularity":{'value':1, 'chance': 0.90},
+    "Dubbo":    {'value':2, 'chance': 0.80},
+    "Trip":     {'value':3, 'chance': 0.70},
+    "Bossus":   {'value':4, 'chance': 0.60},
+    "TopBossus":{'value':5, 'chance': 0.50},
+    "Classus":  {'value':6, 'chance': 0.40},
+    "Seventh":  {'value':7, 'chance': 0.30},
+    "Eighth":   {'value':8, 'chance': 0.20},
+    "Ninth":    {'value':9, 'chance': 0.10},
+    "Tenth":    {'value':10, 'chance': 0.05},
+    "Naturalus":{
+                'value': 11,
+                'elements': frozenset(["plant","cold","air","water","earth","fire"]),
+                'chance': 0.25}
+            }
+
+def bio():
+    temple_lore = ("Deep below the depths of Wublin Island, exists a sort of factory,"
+          "that's unstable energies fed electricity straight to Wublin Island to power it,"
+          "and it's existence that was meant to be hidden from the world... but alas, here we are."
+          "to elemental counts reaching limits we always thought were impossible,"
+          "Template Temple exists to create bases as the only necessary way to add"
+          "more elements to monster like never before, however using these templates,"
+          "to actually try and make monsters with >5 elements, is not advised and "
+          "could lead to absolute destruction. so tread carefully, within the Temple")
+    print(textwrap.fill(temple_lore, width=70))
+
+
+
+
+monsters_made = {}
+
+def spawn_nuth():
+
+    while True:
+        nuth = input("Press N to birth a new Nuth: ").upper()
+        if nuth == "N":
+            print("Nuth has arose!")
+            monsters_made["Nuth"] = monsters_made.get("Nuth", 0) + 1
+            break
+        elif nuth == "Q":
+            return
+        else:
+            print("N is for Nuth, and NOTHING else...")
+
+def elem_multip_timer(total_seconds):
+    while total_seconds > 0:
+        mins, secs = divmod(total_seconds, 60)
+        print(f"{mins:02d}:{secs:02d}")
+        time.sleep(1)
+        total_seconds -= 1
+
+
+def element_multiplier():
+
+    while True:
+        if not monsters_made or "Nuth" not in monsters_made:
+            print("You have no Nuth! Simply spawn him from menu option 1!")
+            return
+
+        numb_str = input("Enter an amount to upgrade a Nuth's elemental template: ").upper()
+
+        if numb_str == "Q":
+            return
+
+        if not numb_str.isdigit():
+            print(f"{numb_str} does not withhold its place here in the temple...")
+            continue
+
+        numb = int(numb_str)
+
+        if numb == 0:
+            print("You are already operating with what's considered nothing.")
+        elif numb < 0:
+            print("Anything below Nuth is untouched territory, shan't we go there.")
+        elif numb > 10:
+            print("You're pushing beyond what is already considered at its limits!\n"
+                  "10 elements or less!")
+        else:
+            roll = random.random()
+
+            if numb == 1:
+                if roll < monsters["Singularity"]['chance']:
+                    elem_multip_timer(10)
+                    monsters_made["Singularity"] = monsters_made.get("Singularity", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Singularity has birthed from Nuth!")
+                else:
+                    elem_multip_timer(5)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 2:
+                if roll < monsters["Dubbo"]['chance']:
+                    elem_multip_timer(20)
+                    monsters_made["Dubbo"] = monsters_made.get("Dubbo", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Dubbo has birthed from Nuth!")
+                else:
+                    elem_multip_timer(10)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 3:
+                if roll < monsters["Trip"]['chance']:
+                    elem_multip_timer(30)
+                    monsters_made["Trip"] = monsters_made.get("Trip", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Trip has birthed from Nuth!")
+                else:
+                    elem_multip_timer(15)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 4:
+                if roll < monsters["Bossus"]['chance']:
+                    elem_multip_timer(40)
+                    monsters_made["Bossus"] = monsters_made.get("Bossus", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Bossus has birthed from Nuth!")
+                else:
+                    elem_multip_timer(20)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 5:
+                if roll < monsters["TopBossus"]['chance']:
+                    elem_multip_timer(50)
+                    monsters_made["TopBossus"] = monsters_made.get("TopBossus", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("TopBossus has birthed from Nuth!")
+                else:
+                    elem_multip_timer(25)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 6:
+                if roll < monsters["Classus"]['chance']:
+                    elem_multip_timer(60)
+                    monsters_made["Classus"] = monsters_made.get("Classus", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Classus has birthed from Nuth!")
+                else:
+                    elem_multip_timer(30)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 7:
+                if roll < monsters["Seventh"]['chance']:
+                    elem_multip_timer(70)
+                    monsters_made["Seventh"] = monsters_made.get("Seventh", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Seventh has birthed from Nuth!")
+                else:
+                    elem_multip_timer(35)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 8:
+                if roll < monsters["Eighth"]['chance']:
+                    elem_multip_timer(80)
+                    monsters_made["Eighth"] = monsters_made.get("Eighth", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Eighth has birthed from Nuth!")
+                else:
+                    elem_multip_timer(40)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 9:
+                if roll < monsters["Ninth"]['chance']:
+                    elem_multip_timer(90)
+                    monsters_made["Ninth"] = monsters_made.get("Ninth", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Ninth has birthed from Nuth!")
+                else:
+                    elem_multip_timer(45)
+                    print("Nuth could not sustain the elemental summation!")
+
+            elif numb == 10:
+                if roll < monsters["Tenth"]['chance']:
+                    elem_multip_timer(100)
+                    monsters_made["Tenth"] = monsters_made.get("Tenth", 0) + 1
+                    monsters_made["Nuth"] -= 1
+                    if monsters_made["Nuth"] == 0:
+                        del monsters_made["Nuth"]
+                    print("Tenth has birthed from Nuth!")
+                else:
+                    elem_multip_timer(50)
+                    print("Nuth could not sustain the elemental summation!")
+
+
+def element_sequence():
+    elements = ["plant", "cold", "air", "water", "earth", "fire"]
+    entered = []
+    print("Input the 6 elements adjacent to the amount of elements the template has:")
+    for i in range(6):
+        el = input(f"Element {i+1}: ").lower().strip()
+        if el not in elements:
+            print("Invalid element. Stick to what the Injector can offer you.")
+            return False
+        if el in entered:
+            print(f"{el} has already been used. Each element must be unique.")
+            return False
+        entered.append(el)
+
+    if frozenset(entered) == monsters["Naturalus"]["elements"]:
+        return True
+    else:
+        print("That sequence doesn't match a known template.")
+        return False
+
+def element_injector():
+    elements = ["plant", "cold", "air", "water", "earth", "fire"]
+    while True:
+        if not monsters_made:
+            print("You have no monsters to inject!")
+            return
+
+        print("Your monsters:")
+        for name, count in monsters_made.items():
+            if monsters[name]['value'] != 6:
+                marker = "X"
+            else:
+                marker = " "
+            print(f"  [{marker}] {name}: {count}x")
+
+        for element in elements:
+            print(element, end=" ")
+        print()
+
+        base_name = input("Choose a template monster to inject (Q to cancel): ").strip().capitalize()
+
+
+        if base_name == "Q":
+            return
+        if base_name not in monsters_made:
+            print("You don't own that monster!")
+            continue
+        if monsters[base_name]['value'] != 6:
+            print("The Injector only has plans for one monster...")
+            continue
+
+        if not element_sequence():
+            print("The injection failed before it could even begin...")
+            continue
+
+        roll = random.random()
+        monsters_made[base_name] -= 1
+        if monsters_made[base_name] == 0:
+            del monsters_made[base_name]
+
+        if roll < monsters["Naturalus"]['chance']:
+            elem_multip_timer(96)
+            monsters_made["Naturalus"] = monsters_made.get("Naturalus", 0) + 1
+            print("Naturalus has emerged from the injection!")
+        else:
+            elem_multip_timer(48)
+            print("The injection destabilized... the template was lost.")
+
+def menu():
+    print("Welcome to Template Temple!")
+    while True:
+        choice = input("What would you like to do?\n"
+                       "1. Emerge Nuth  2. Elemental Multiplier\n"
+                       "3. Element Injector  4. Monster List & Island Bio (Q to quit): ").upper()
+        if choice == "Q":
+            print("Goodbye!")
+            break
+        elif choice == "1":
+            spawn_nuth()
+        elif choice == "2":
+            element_multiplier()
+        elif choice == "3":
+            element_injector()
+        elif choice == "4":
+            if not monsters_made:
+                print("You haven't made any monsters yet!")
+            else:
+                for name, count in monsters_made.items():
+                    print(f"  {name}: {count}x")
+            bio_choice = input("Press E to learn more about the island (Q to quit): ").upper()
+            if bio_choice == "E":
+                bio()
+            pass
+
+menu()
