@@ -1,0 +1,204 @@
+import textwrap
+
+
+def yooreek_bio():
+  text1 = ("Yooreek… uh… whats the story behind this Monster? It seems to possess an organic"
+        " exterior, but the sound it produces definitely evokes something more robotic."
+        " Perhaps this trait is inherited from auditory residue from former residents of the"
+        " Workshop. This Ethereal and Gaddzooks appear to have a lot of genetic programming"
+        " in common, but the quirks of the attunement and synthesis processes have resulted in"
+        " markedly different final products. It matters little to these two, who savor each others"
+        " company and really click musically.")
+  print(textwrap.fill(text1, width=70))
+def meebkin_bio():
+    text2 = ("The Meebkin gets its name from a greater-than-average affinity for the Meeb"
+          " critters essential to the specialized processes of the Workshop. Rather than"
+          " being recruited for attunement, a pair is carefully chosen to perch on either"
+          " end of a special baton made of woven fibers. Deftly and gymnastically twirling"
+          " the baton over its head, the Meebkin is able to coax otherworldly groans and"
+          " gargles out of the mouths of Meebs, but don't worry - the critters aren't"
+          " uncomfortable. Rather the opposite: the Triple-Element Ethereal is a doting"
+          " and responsible caretaker.")
+    print(textwrap.fill(text2, width=70))
+
+def gaddzooks_bio():
+  text3 = ("The instability present in all Triple-Element Ethereals is no better represented"
+        " than in the Gaddzooks. Every snap of their jaws and tap of their feet threatens"
+        " to shatter its very form, and yet this Monster is able to keep it together and"
+        " perform. An outlier in the Monster World as far as double-headedness goes, both"
+        " of the Gaddzook brainstems get along famously and are always totally in sync with"
+        " one another (we suppose you'd have to be in order to attain that level of"
+        " percussive prowess). This cheerfulness and amicability extends to friendships with"
+        " its fellow Ethereals as well, particularly the closely-related Yooreek.")
+  print(textwrap.fill(text3, width=70))
+def blarret_bio():
+  text4 = ("Right after it's synthesized, the Ethereal Blarret only has one functioning mouth:"
+        " the top one attached to the rest of its face. Once it's a little older, the"
+        " Monster's secondary and tertiary mouths learn to sing with preternatural speed…"
+        " although a non-trivial amount of discipline and concentration is required to"
+        " make sure they all sing in the right order. After a while though, the reflex"
+        " becomes 'otama-tic.' Blarrets love getting their triple chins scratched by an"
+        " Auglur's digital claws - although in the case of the two lower mouths, it's more"
+        " like a neck scratch?")
+  print(textwrap.fill(text4, width=70))
+
+def auglur_bio():
+  text5 = ("The Auglur leans heavily into its Mech-Element parentage, and blurs the line"
+        " between the real and virtual worlds by manifesting a trio of hands with digital"
+        " digits. You don't need augmented reality goggles to see them; the Auglur's power"
+        " makes them visible to all. From there, it's a simple matter of gesturing and"
+        " swiping in mid-air at 'sonic panels' that create soundscapes drawn from nostalgic dreams."
+        " Alright, maybe it's not actually so simple for you or I [sic] - but to the Auglur,"
+        " it comes naturally… er, Ethereally.")
+  print(textwrap.fill(text5, width=70))
+
+def flasque_bio():
+  text6 = ("It's challenging to describe the Flasque as a 'living thing' by the conventional"
+        " definition of the term. The Ethereal's body consists of little more than an assortment"
+        " of beakers and chalices, which float and move together impossibly, defying all known"
+        " scientific laws. If that wasn't already enough, the Monster purposefully collides"
+        " these body parts together - isn't it fearful of breaking the glass? By a fluke of"
+        " nature, the Flasque's green lifeblood that sloshes and splashes about inside its body"
+        " parts actually fortifies them and makes them completely shatter-resistant.")
+  print(textwrap.fill(text6, width=70))
+
+def nitebear_bio():
+  text7 = ("Hello, hello? Hello! Behind the laughter and mirth of the majority of the"
+        " Workshop's inhabitants lurks the Nitebear. A mishmash of multiple ideas, the"
+        " leading theory is that it's secretly powered by quirky animatronics"
+        " (hence the cables sticking out of its head). To avoid going purple in the face"
+        " (and so that its servos don't lock up), the Monster must routinely express"
+        " itself via a string of groans and moans. It's important for the Nitebear to"
+        " socialize, even though its melancholic disposition often dampens the party"
+        " atmosphere. The Ethereal asserts that it's going to stop killing the mood with"
+        " the others and isolate itself... but it always comes back.")
+  print(textwrap.fill(text7, width=70))
+
+def piplash_bio():
+  text8 = ("Wow! This Triple-Element Ethereal is... not what we were expecting. In a class"
+        " of Monsters that includes some of the more unsightly species, the Piplash"
+        " exists in stark and striking contrast. It's so cute and endearing! Even its"
+        " headbanging, stereotypically associated with hardcore genres, is absolutely"
+        " delightful. What precisely is going on here?! Is the Piplash harboring some"
+        " secret, putting up a front, concealing a side we can't see? Could the Monster"
+        " possibly be as wholesome as it outwardly seems? This is driving us crazy!!!")
+  print(textwrap.fill(text8, width=70))
+
+def xrt_bio():
+  text9 = ("Whenever Zarroë is struggling to articulate a thought, or the Colossal is having"
+        " trouble remembering something, suspicion mounts that there's an X'rt about."
+        " Put bluntly (and literally), this is the Monster equivalent of a brain fart:"
+        " its home is a gargantuan brain and it communicates by spewing gas from its..."
+        " mouth? Gut? We're not sure how to classify it. The biggest surprise, especially"
+        " because of the presence of the Poison Element, is that the X'rt's gaseous"
+        " emissions are totally odorless. Instead, they buildup over time and incite"
+        " confusion and fogginess in the thought processes of its neighbors"
+        " - so make sure you're not planning on doing anything mentally taxing when an"
+        " X'rt is nearby.")
+  print(textwrap.fill(text9, width=70))
+
+def teetertauter_bio():
+  text10 = ("Teeter-Tauter is an unusually unstable pair, even when compared to its synthetic"
+        " siblings who slink about the Workshop. Its chaotic Elemental power necessitated"
+        " its split into two separate beings that together form one lovably lopsided"
+        " Ethereal - made complete with some minor 'Mech-nical' enhancements! While the"
+        " bipedal Teeter's acrobatic prowess is undeniable, its tireless tittering tends"
+        " to teeter toward tedious in the eye of its more responsible half, Tauter.")
+  print(textwrap.fill(text10, width=70))
+
+def whaill_bio():
+    text11 = ("Some Ethereals prefer to whisper, while others favor wailing."
+              " The Quad-Element Whaill is the latter, so-named for the ululations"
+              " that gurgle forth from its many mouths. Although at first blush these"
+              " sounds seem melodious, over time they can elicit feelings of dread and"
+              " disorientation in the listener. That's because the sound waves the Whaill"
+              " produces actually begin to tear apart the fabric of space time and"
+              " threaten to expose reality to the Rift, the world between worlds."
+              " But how can the polystomatous Plasma Boss help it? When you have hands"
+              " for mouths and mouths for hands, there's little else that you can do"
+              " but wail.")
+    print(textwrap.fill(text11, width=70))
+
+def pentumbra_bio():
+    text12 = ("Even though its official species name is recognized to be 'Pentumbra'"
+              " (because of its five limbs and the shadow it casts), everyone just"
+              " wants to call this Monster a 'Shady Long-Legs'. The Ethereal Quad's"
+              " affinity for the Shadow Element causes an unusual sticky pink residue"
+              " to form on its legs - something to do with the fact that they're so"
+              " often bathed in darkness. Apparently this phenomenon has been known"
+              " to happen at large scale, when the dark matter of the Rift between"
+              " dimensions seeps out from interdimensional fractures. It could be a trick"
+              " of light, but the gloom that dwells beneath a Pentumbra almost seems to"
+              " take a life of its own... but because it's nothing more than a shadow of"
+              " a shade, it tends to imitate other beings' sounds rather than create its"
+              " own.")
+    print(textwrap.fill(text12, width=70))
+
+def vhenshun_bio():
+    text13 = ("Behold… a workshop within the Workshop! Fittingly, the Mech Quad Vhenshun"
+              " looks like the wooden workbench of Monster antiquity where items and"
+              " decorations alike were crafted… if that workbench sprang to life and"
+              " swapped crafting for clanging! Not only is this contraption itself a"
+              " product of mechanical invention, it's an inventor in its own right!"
+              " The Monster is constantly experimenting with the materials available"
+              " to devise new gadgets and gizmos - not unlike the Celestial that shares"
+              " its Elemental affiliation. Rumors swirl around that it's planning"
+              " a hi-Mech heist to distract Zarroë and escape into the great beyond, but"
+              " we're not sure the world is prepared for Vhenshun impact.")
+    print(textwrap.fill(text13, width=70))
+
+def rhysmuth_bio():
+    text14 = ("Rhysmuth's cubic configuration comes from its complex Crystalline"
+              " composition. Each of its four Elements exerts incredible pressure"
+              " against the others, compressing the very fiber of this Ethereal's"
+              " being into compact blocks which vibrate with an atomic energy that"
+              " can barely be contained. The most powerful of these blocks, the Rhubix"
+              " Cube, is closely guarded within Rhysmuth's heart. A word to the wise:"
+              " beware when excavating the Workshop's Mini-Mine, as this crafty Quad"
+              " enjoys creeping among the minerals.")
+    print(textwrap.fill(text14, width=70))
+
+def oogiddy_bio():
+    text15 = ("Look, we get it - Oogiddy doesn't exactly give everyone the warm fuzzies."
+              " But what if we told you that in the midst of its nauseating display,"
+              " it is actually performing a crucial function to preserve the ecosystem of"
+              " the Workshop? Oogiddy traps Poisonous gasses within its bulbous body,"
+              " mixing them with its own uniquely fragrant blend of acidic juices to"
+              " neutralize all toxicity. The goopy byproduct created through this process"
+              " ain't pretty, but it acts as a highly effective fertilizer (or hair gel!)."
+              " Oogiddy even bids its fellow Monsters to steer clear of noxious"
+              " substances by aggressively pulsating its chromatophores in warning.")
+    print(textwrap.fill(text15, width=70))
+
+def bemeebeth_bio():
+    text16 = ("It's alive! Not since the creation of the Wubbox has Monsterkind witnessed"
+              " such a significant scientific achievement. The gargantuan BeMeebEth"
+              " represents the pinnacle of Zarroë's mad tinkering and endless"
+              " experimentation. The Ethereal Quint towers over the other denizens of the"
+              " Ethereal Workshop, inspiring awe and apprehension in equal measure."
+              " Visible in its unstable composition are all five Ethereal Elements:"
+              " Plasmic tentacles, Shadowy claws, Crystalline cartilage, pockmarked"
+              " Poisonous spines, and the Mech-nical jaw that houses its mighty brain."
+              " From the moment it erupted from the Synthesizer's upper bulb, there was"
+              " no question that this Monster was the Top Boss of the Workshop.")
+    print(textwrap.fill(text16, width=70))
+
+
+bio_lookup = {
+    "yooreek": yooreek_bio,
+    "meebkin": meebkin_bio,
+    "blarret": blarret_bio,
+    "gaddzooks": gaddzooks_bio,
+    "auglur": auglur_bio,
+    "flasque": flasque_bio,
+    "nitebear": nitebear_bio,
+    "piplash": piplash_bio,
+    "x'rt": xrt_bio,
+    "teeter-tauter": teetertauter_bio,
+    "whaill": whaill_bio,
+    "pentumbra": pentumbra_bio,
+    "vhenshun": vhenshun_bio,
+    "rhysmuth": rhysmuth_bio,
+    "oogiddy": oogiddy_bio,
+    "bemeebeth": bemeebeth_bio
+            }
