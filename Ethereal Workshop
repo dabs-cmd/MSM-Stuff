@@ -1,0 +1,353 @@
+# Ethereal Workshop
+import random
+import time
+import etheworkshopbios
+
+ELEMENTS = ["plasma", "shadow", "mech", "crystal", "poison"]
+
+
+def attunement_timer(total_seconds, element):
+    while total_seconds > 0:
+        mins, secs = divmod(total_seconds, 60)
+        print(f"{mins:02d}:{secs:02d}")
+        time.sleep(1)
+        total_seconds -= 1
+    print(f"You have attuned the {element} element to a meeb!")
+
+def synthesis_timer(total_seconds):
+    while total_seconds > 0:
+        mins, secs = divmod(total_seconds, 60)
+        print(f"{mins:02d}:{secs:02d}")
+        time.sleep(1)
+        total_seconds -= 1
+
+def element_choice():
+    elemchoice = input("Alright! Select an element above to attune to a Meeb!: "
+    "(q to return to menu): ").lower()
+    return elemchoice
+
+def menu():
+    print("Welcome to Ethereal Workshop! What would you like to do on the island?")
+    selection = input("1. Attunement "
+                  "2. Synthesis "
+                  "3. Monster List ")
+    return selection
+
+def synthesis():
+    valid = False
+    while not valid:
+        synel1 = input("First Element: ").lower()
+        if synel1 == "q":
+            return
+        synel2 = input("Second Element: ").lower()
+        if synel2 == "q":
+            return
+        synel3 = input("Third Element: ").lower()
+        if synel3 == "q":
+            return
+
+        chosen = [synel1, synel2, synel3]
+
+
+        if any(e not in attuned for e in chosen):
+            print("Invalid element!")
+            continue
+        if len(set(chosen)) != 3:
+            print("You cannot choose the same element!")
+            continue
+        if any(attuned[e] < 1 for e in chosen):
+            print("Insufficient meebs!")
+            continue
+
+        valid = True
+
+        combo = frozenset(chosen)
+
+        found_monster = None
+        for name,data in monsters.items():
+            if data['elements'] == combo:
+                found_monster = name
+                break
+        if found_monster is None:
+            print("No monster matches that combination!")
+            continue
+
+    roll = random.random()
+    if roll < monsters[found_monster]['chance']:
+        synthesis_timer(66)
+        print("success!")
+        print(f"You've synthesized a {found_monster}")
+        for elem in chosen:
+            attuned[elem] -= 1
+        monsters_made[found_monster] = monsters_made.get(found_monster, 0) + 1
+    else:
+        synthesis_timer(10)
+        print("failure! better luck next time...")
+        for elem in chosen:
+            if random.random() > 0.5:
+                refund = random.randint(1,1)
+                attuned[elem] += refund
+                print(f"Refunded {refund} {elem} meebs!")
+
+def synthesis_quad():
+    valid = False
+    while not valid:
+
+        # show monsters they can use as a base
+        # (only triples they actually have in monsters_made)
+        print("Your available triple monsters:")
+        for name in monsters_made:
+            if len(monsters[name]["elements"]) == 3:
+                print(f"  {name}")
+
+        base_name = input("Choose a triple monster to use as base (Q to cancel): ").strip().capitalize()
+        if base_name == "Q":
+            return
+        if base_name not in monsters_made:
+            print("You don't own that monster!")
+            continue
+        if len(monsters[base_name]["elements"]) != 3:
+            print("You must use a triple element monster as the base!")
+            continue
+
+        # choose the new 4th element
+        new_elem = input("Choose the new element to add: ").lower()
+        if new_elem == "q":
+            return
+
+        if new_elem not in ELEMENTS:
+            print("Invalid input!")
+            continue
+        if new_elem in monsters[base_name]["elements"]:
+            print("That element is already in your base monster!")
+            continue
+        # check the triple elements (need 2 each)
+        enough_meebs = True
+        for elem in monsters[base_name]["elements"]:
+            if attuned[elem] < 2:
+                print(f"You need at least 2 {elem} meebs!")
+                enough_meebs = False
+                break
+        if not enough_meebs:
+            continue
+        if attuned[new_elem] < 3:
+            print(f"You need at least 3 {new_elem} meebs!")
+            continue
+
+        chosen = list(monsters[base_name]["elements"]) + [new_elem]
+        combo = frozenset(chosen)
+
+        found_monster = None
+        for name, data in monsters.items():
+            if data['elements'] == combo:
+                found_monster = name
+                break
+        if found_monster is None:
+            print("No monster matches that combination!")
+            continue
+        valid = True
+
+    roll = random.random()
+    if roll < monsters[found_monster]['chance']:
+        synthesis_timer(78)
+        print("success!")
+        for elem in monsters[base_name]["elements"]:
+            attuned[elem] -= 2
+            attuned[new_elem] -= 3
+        # kills old monster
+        monsters_made[base_name] -= 1
+        if monsters_made[base_name] == 0:
+            del monsters_made[base_name]
+        monsters_made[found_monster] = monsters_made.get(found_monster, 0) + 1
+        print(f"You've synthesized a {found_monster}!")
+
+    else:
+        synthesis_timer(17)
+        print("Failure! Better luck next time...")
+        for elem in chosen:
+            if random.random() > 0.43:
+                refund = random.randint(1, 2)
+                attuned[elem] += refund
+                print(f"Refunded {refund} {elem} meebs!")
+
+def synthesis_quint():
+    valid = False
+    while not valid:
+
+
+        print("Your available quad monsters:")
+        for name in monsters_made:
+            if len(monsters[name]["elements"]) == 4:
+                print(f"  {name}")
+
+        base_name = input("Choose a quad-elemented monster to use as a base (Q to cancel): ").strip().capitalize()
+        if base_name == "Q":
+            return
+        if base_name not in monsters_made:
+            print("You don't own that monster!")
+            continue
+        if len(monsters[base_name]["elements"]) != 4:
+            print("You must use a quad element monster as the base!")
+            continue
+
+
+        # choose the new 4th element
+        new_elem = input("Choose the new element to add: ").lower()
+        if new_elem == "q":
+            return
+
+        if new_elem not in ELEMENTS:
+            print("Invalid input!")
+            continue
+        if new_elem in monsters[base_name]["elements"]:
+            print("That element is already in your base monster!")
+            continue
+
+        enough_meebs = True
+        for elem in monsters[base_name]["elements"]:
+            if attuned[elem] < 3:
+                print(f"You need at least 3 {elem} meebs!")
+                enough_meebs = False
+                break
+        if not enough_meebs:
+            continue
+        if attuned[new_elem] < 4:
+            print(f"You need at least 4 {new_elem} meebs!")
+            continue
+
+        chosen = list(monsters[base_name]["elements"]) + [new_elem]
+        combo = frozenset(chosen)
+
+        found_monster = None
+        for name, data in monsters.items():
+            if data['elements'] == combo:
+                found_monster = name
+                break
+        if found_monster is None:
+            print("No monster matches that combination!")
+            continue
+        valid = True
+
+    roll = random.random()
+    if roll < monsters[found_monster]['chance']:
+        synthesis_timer(125)
+        print("success!")
+        for elem in monsters[base_name]["elements"]:
+            attuned[elem] -= 3
+        attuned[new_elem] -= 4
+        # kills old monster
+        monsters_made[base_name] -= 1
+        if monsters_made[base_name] == 0:
+            del monsters_made[base_name]
+        monsters_made[found_monster] = monsters_made.get(found_monster, 0) + 1
+        print(f"You've synthesized a {found_monster}!")
+
+    else:
+        synthesis_timer(22)
+        print("Failure! Better luck next time...")
+        for elem in chosen:
+            if random.random() > 0.30:
+                refund = random.randint(1, 3)
+                attuned[elem] += refund
+                print(f"Refunded {refund} {elem} meebs!")
+
+
+
+    
+
+monsters = {
+    "Yooreek":{"elements": frozenset(["plasma", "shadow", "mech"]), "chance": 0.95},
+    "Meebkin":{"elements": frozenset(["plasma", "shadow", "crystal"]), "chance": 0.80},
+    "Blarret":{"elements": frozenset(["plasma", "shadow", "poison"]), "chance": 0.75},
+    "Gaddzooks":{"elements": frozenset(["plasma", "mech", "crystal"]), "chance": 0.60},
+    "Auglur":{"elements": frozenset(["plasma", "mech", "poison"]), "chance": 0.55},
+    "Flasque":{"elements": frozenset(["plasma", "crystal", "poison"]), "chance": 0.40},
+    "Nitebear":{"elements": frozenset(["shadow", "mech", "crystal"]), "chance": 0.35},
+    "Piplash":{"elements": frozenset(["shadow", "mech", "poison"]), "chance": 0.20},
+    "X'rt":{"elements": frozenset(["shadow", "crystal", "poison"]), "chance": 0.15},
+    "Teeter-tauter":{"elements": frozenset(["mech", "crystal", "poison"]),"chance": 0.10},
+    "Whaill":{"elements": frozenset(["plasma","shadow","mech","crystal"]), "chance": 0.64},
+    "Vhenshun":{"elements": frozenset(["plasma","shadow","mech","poison"]), "chance": 0.32},
+    "Pentumbra":{"elements": frozenset(["plasma","shadow","poison","crystal"]), "chance": 0.16},
+    "Rhysmuth":{"elements": frozenset(["plasma","poison","mech","crystal"]), "chance": 0.08},
+    "Oogiddy":{"elements": frozenset(["poison","shadow","mech","crystal"]), "chance": 0.04},
+    "Bemeebeth":{"elements": frozenset(["plasma","shadow","mech","crystal","poison"]), "chance": 0.01}
+            }
+
+options = str([1,2,3])
+
+
+attuned = {"plasma": 0,
+           "shadow": 0,
+           "mech": 0,
+           "crystal": 0,
+           "poison": 0}
+
+monsters_made = {}
+selec = menu()
+
+while selec != "q":
+
+    if selec == "1":
+
+        for element in ELEMENTS:
+            print(element, end=" ")
+        print()
+        e_choice = element_choice()
+        while e_choice not in ELEMENTS and e_choice != "q":
+            print("Invalid Element selection!")
+            e_choice = element_choice()
+        if e_choice != "q":
+
+            if e_choice == "plasma":
+                attunement_timer(5, e_choice)
+            elif e_choice in ["shadow", "mech"]:
+                attunement_timer(10, e_choice)
+            elif e_choice in ["crystal", "poison"]:
+                attunement_timer(20, e_choice)
+            attuned[e_choice] += 1
+        selec = menu()
+
+    elif selec == "2":
+        print("You have:")
+        for key in attuned:
+            print(f"  {attuned[key]} {key} meebs.")
+        tier = input("Synthesize a 3, 4, or 5 element monster? (q to return): ").strip()
+        if tier == "3":
+            leave = input("Press e to begin synthesis! (q to return): ").lower()
+            if leave == "e":
+                synthesis()
+        elif tier == "4":
+            leave = input("Press e to begin synthesis! (q to return): ").lower()
+            if leave == "e":
+                synthesis_quad()
+        elif tier == "5":
+            leave = input("Press e to begin synthesis! (q to return): ").lower()
+            if leave == "e":
+                synthesis_quint()
+        elif tier == "q":
+            pass
+        else:
+            print("Invalid choice! Please enter 3, 4, or 5.")
+        selec = menu()
+
+    elif selec == "3":
+        if not monsters_made:
+            print("You haven't made any monsters yet!")
+        else:
+            for name, count in monsters_made.items():
+                print(f"  {name}: {count}x")
+            bio = input("Type a monster name to learn more! (q to return): ").lower()
+            if bio != "q":
+                if bio in etheworkshopbios.bio_lookup:
+                    etheworkshopbios.bio_lookup[bio]()
+                else:
+                    print("Monster not found!")
+                pass
+        selec = menu()
+
+    else:
+        print("Invalid choice!")
+        selec = menu()
+
+print("Goodbye!")
